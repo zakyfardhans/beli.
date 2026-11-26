@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#0D9488" />
+        <title>Beli - Navigation Bar</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                DEFAULT: "#0D9488",
+                                dark: "#0F766E",
+                                light: "#CCFBF1",
+                            },
+                            ink: "#111C2D",
+                            muted: "#64748B",
+                            canvas: "#F8FAFC",
+                            line: "#E2E8F0",
+                        },
+                        fontFamily: {
+                            sans: ["Plus Jakarta Sans", "sans-serif"],
+                        },
+                        boxShadow: {
+                            soft: "0 4px 16px -2px rgba(30, 41, 59, 0.06)",
+                            float: "0 10px 25px -4px rgba(30, 41, 59, 0.10)",
+                        },
+                    },
+                },
+            };
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <style>
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .nav-link {
+                transition:
+                    color 0.18s ease,
+                    background-color 0.18s ease;
+            }
+            .search-input:focus {
+                outline: none;
+            }
+            .search-wrap:focus-within {
+                border-color: #0d9488;
+                box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+            }
+            #mobile-menu {
+                display: none;
+            }
+            #mobile-menu.open {
+                display: block;
+            }
+            @media (max-width: 767px) {
+                .desktop-only {
+                    display: none !important;
+                }
+                .mobile-only {
+                    display: flex !important;
+                }
+            }
+        </style>
+    </head>
+    <body class="min-h-screen bg-canvas text-ink">
+        <!-- Navigation -->
+        <header class="relative z-30 bg-white shadow-soft">
+            <!-- Utility strip -->
+            <div class="border-b border-line bg-[#F8FAFC]">
+                <div
+                    class="mx-auto flex h-9 max-w-[1280px] items-center justify-between px-4 md:px-8 xl:px-12"
+                >
+                    <div
+                        class="desktop-only flex items-center gap-4 text-[11px] font-medium text-slate-600"
+                    >
+                        <a href="#" class="nav-link hover:text-brand"
+                            >Seller Centre</a
+                        >
+                        <span class="h-3 w-px bg-slate-300"></span>
+                        <a href="#" class="nav-link hover:text-brand"
+                            >Mulai Berjualan</a
+                        >
+                        <span class="h-3 w-px bg-slate-300"></span>
+                        <a href="#" class="nav-link hover:text-brand"
+                            >Download Aplikasi</a
+                        >
+                        <span class="h-3 w-px bg-slate-300"></span>
+                        <div class="flex items-center gap-2">
+                            <span>Ikuti kami</span>
+                            <a
+                                href="#"
+                                aria-label="Facebook"
+                                class="rounded-full text-slate-600 hover:text-brand"
+                                ><i
+                                    data-lucide="facebook"
+                                    class="h-3.5 w-3.5"
+                                ></i
+                            ></a>
+                            <a
+                                href="#"
+                                aria-label="Instagram"
+                                class="rounded-full text-slate-600 hover:text-brand"
+                                ><i
+                                    data-lucide="instagram"
+                                    class="h-3.5 w-3.5"
+                                ></i
+                            ></a>
+                        </div>
+                    </div>
+                    <div
+                        class="desktop-only ml-auto flex items-center gap-4 text-[11px] font-medium text-slate-600"
+                    >
+                        <a
+                            href="#"
+                            class="nav-link flex items-center gap-1.5 hover:text-brand"
+                            ><i data-lucide="bell" class="h-3.5 w-3.5"></i
+                            ><span class="relative"
+                                >Notifikasi<span
+                                    class="absolute -right-2 -top-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-brand px-1 text-[9px] text-white"
+                                    >2</span
+                                ></span
+                            ></a
+                        >
+                        <a
+                            href="#"
+                            class="nav-link flex items-center gap-1.5 hover:text-brand"
+                            ><i
+                                data-lucide="circle-help"
+                                class="h-3.5 w-3.5"
+                            ></i
+                            >Bantuan</a
+                        >
+                        <button
+                            class="nav-link flex items-center gap-1.5 hover:text-brand"
+                        >
+                            <i data-lucide="globe" class="h-3.5 w-3.5"></i
+                            >Bahasa Indonesia<i
+                                data-lucide="chevron-down"
+                                class="h-3 w-3"
+                            ></i>
+                        </button>
+                        <a href="#" class="nav-link hover:text-brand">Daftar</a>
+                        <span class="-ml-2 h-3 w-px bg-slate-300"></span>
+                        <a href="#" class="nav-link -ml-2 hover:text-brand"
+                            >Log In</a
+                        >
+                    </div>
+                    <div
+                        class="mobile-only hidden w-full items-center justify-between text-[11px] font-medium text-slate-600"
+                    >
+                        <span class="flex items-center gap-1"
+                            ><i
+                                data-lucide="truck"
+                                class="h-3.5 w-3.5 text-brand"
+                            ></i
+                            >Gratis ongkir untuk pilihan produk</span
+                        >
+                        <div class="flex items-center gap-3">
+                            <a href="#" class="hover:text-brand">Daftar</a>
+                            <a href="#" class="hover:text-brand">Masuk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main navigation -->
+            <div class="mx-auto max-w-[1280px] px-4 md:px-8 xl:px-12">
+                <div
+                    class="flex h-[76px] items-center gap-5 md:h-[88px] md:gap-8"
+                >
+                    <!-- Mobile menu trigger -->
+                    <button
+                        id="menu-toggle"
+                        class="mobile-only hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100"
+                        aria-label="Buka menu"
+                        aria-expanded="false"
+                    >
+                        <i data-lucide="menu" class="h-5 w-5"></i>
+                    </button>
+
+                    <!-- Brand -->
+                    <a
+                        href="#"
+                        class="flex shrink-0 items-center gap-2.5"
+                        aria-label="Beli beranda"
+                    >
+                        <span
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-sm md:h-12 md:w-12"
+                        >
+                            <svg
+                                viewBox="0 0 48 48"
+                                class="h-8 w-8"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M13 17.5h22l2 23H11l2-23Z"
+                                    stroke="currentColor"
+                                    stroke-width="2.6"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M18 18v-3.5a6 6 0 0 1 12 0V18"
+                                    stroke="currentColor"
+                                    stroke-width="2.6"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M29.5 25.5c-1.2-1.1-2.5-1.6-4.2-1.6-2.3 0-4 1.1-4 2.8 0 4.1 9.2 1.6 9.2 6.1 0 1.9-1.8 3.2-4.5 3.2-2 0-3.7-.7-5-2"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </span>
+                        <span
+                            class="text-[25px] font-extrabold tracking-[-1.2px] text-ink md:text-[29px]"
+                            >beli<span class="text-brand">.</span></span
+                        >
+                    </a>
+
+                    <!-- Search -->
+                    <div class="min-w-0 flex-1">
+                        <form
+                            class="search-wrap flex h-11 items-center overflow-hidden rounded-lg border border-slate-300 bg-white transition md:h-12"
+                            role="search"
+                            onsubmit="event.preventDefault()"
+                        >
+                            <i
+                                data-lucide="search"
+                                class="ml-3.5 h-[18px] w-[18px] shrink-0 text-slate-400"
+                            ></i>
+                            <input
+                                class="search-input h-full min-w-0 flex-1 border-0 bg-transparent px-3 text-[13px] text-ink placeholder:text-slate-400 md:text-sm"
+                                type="search"
+                                placeholder="Cari produk, merek, atau kategori..."
+                                aria-label="Cari produk"
+                            />
+                            <button
+                                type="submit"
+                                class="mr-1 flex h-9 w-10 shrink-0 items-center justify-center rounded-md bg-brand text-white transition hover:bg-brand-dark active:scale-[0.97] md:h-10 md:w-12"
+                            >
+                                <i
+                                    data-lucide="search"
+                                    class="h-[17px] w-[17px]"
+                                ></i>
+                            </button>
+                        </form>
+                        <div
+                            class="desktop-only mt-1.5 flex items-center gap-x-4 overflow-hidden whitespace-nowrap text-[10px] text-slate-500"
+                        >
+                            <a href="#" class="hover:text-brand"
+                                >Headset TWS Bluetooth</a
+                            >
+                            <a href="#" class="hover:text-brand"
+                                >Baju Atasan Wanita</a
+                            >
+                            <a href="#" class="hover:text-brand">Jam Tangan</a>
+                            <a href="#" class="hover:text-brand"
+                                >Peralatan Rumah</a
+                            >
+                            <a href="#" class="hover:text-brand">Tumbler</a>
+                            <a href="#" class="hover:text-brand">Sepatu Pria</a>
+                        </div>
+                    </div>
+
+                    <!-- Cart -->
+                    <button
+                        class="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-ink transition hover:bg-teal-50 hover:text-brand"
+                        aria-label="Keranjang belanja"
+                    >
+                        <i
+                            data-lucide="shopping-cart"
+                            class="h-[23px] w-[23px]"
+                        ></i>
+                        <span
+                            class="absolute right-1 top-0 flex h-[17px] min-w-[17px] items-center justify-center rounded-full border-2 border-white bg-brand px-1 text-[9px] font-bold text-white"
+                            >2</span
+                        >
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile expanded menu -->
+            <div
+                id="mobile-menu"
+                class="border-t border-line bg-white shadow-float md:hidden"
+            >
+                <div class="mx-auto max-w-[1280px] space-y-1 px-4 py-3">
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        ><i data-lucide="store" class="h-4 w-4 text-brand"></i
+                        >Mulai Berjualan</a
+                    >
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        ><i data-lucide="bell" class="h-4 w-4 text-brand"></i
+                        >Notifikasi</a
+                    >
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        ><i
+                            data-lucide="circle-help"
+                            class="h-4 w-4 text-brand"
+                        ></i
+                        >Pusat Bantuan</a
+                    >
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        ><i data-lucide="globe" class="h-4 w-4 text-brand"></i
+                        >Bahasa Indonesia</a
+                    >
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        ><i
+                            data-lucide="download"
+                            class="h-4 w-4 text-brand"
+                        ></i
+                        >Download Aplikasi</a
+                    >
+                </div>
+            </div>
+        </header>
+
+        <!-- Minimal demo content -->
+        <main
+            class="mx-auto max-w-[1280px] px-4 py-10 md:px-8 md:py-14 xl:px-12"
+        >
+            <div
+                class="rounded-2xl border border-line bg-white p-6 shadow-soft md:p-10"
+            >
+                <p
+                    class="mb-2 text-xs font-semibold uppercase tracking-[.14em] text-brand"
+                >
+                    Contoh tampilan
+                </p>
+                <h1
+                    class="text-2xl font-bold tracking-tight text-ink md:text-3xl"
+                >
+                    Temukan semua yang kamu butuhkan.
+                </h1>
+                <p class="mt-2 max-w-xl text-sm leading-6 text-slate-500">
+                    Navigation bar Beli menggunakan struktur e-commerce yang
+                    familiar, dengan warna teal sebagai aksen utama sesuai
+                    design system.
+                </p>
+            </div>
+        </main>
+
+        <script>
+            lucide.createIcons();
+            const toggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("mobile-menu");
+            toggle.addEventListener("click", () => {
+                const isOpen = menu.classList.toggle("open");
+                toggle.setAttribute("aria-expanded", String(isOpen));
+                toggle.innerHTML = isOpen
+                    ? '<i data-lucide="x" class="h-5 w-5"></i>'
+                    : '<i data-lucide="menu" class="h-5 w-5"></i>';
+                lucide.createIcons();
+            });
+            window.addEventListener("resize", () => {
+                if (window.innerWidth >= 768) {
+                    menu.classList.remove("open");
+                    toggle.setAttribute("aria-expanded", "false");
+                }
+            });
+        </script>
+    </body>
+</html>

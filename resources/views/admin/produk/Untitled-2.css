@@ -1,0 +1,632 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    color: #111;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== NAVBAR ===== */
+.nav-left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-left img {
+    height: 130px;
+    width: auto;
+
+    max-height: 130px;
+    display: flex;
+
+    justify-content: space-between;
+    transition: opacity 0.2s ease;
+}
+
+.nav-left img:hover {
+    opacity: 0.7;
+}
+
+.nav-left-usn {
+    display: flex;
+    align-items: center;
+}
+
+.nav-top {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+
+    /* STICKY NAVBAR */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* Background tetap solid */
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+}
+
+.nav-center {
+    margin-left: -100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.nav-center a {
+    margin: 0 15px;
+}
+
+.nav-center a:hover {
+    font-weight: bold;
+}
+
+.nav-right a {
+    margin-left: 20px;
+}
+
+.nav-right a:hover {
+    font-weight: bold;
+}
+
+.nav-right-usn {
+    display: none;
+}
+
+.nav-right-btn {
+    /* display: none; */
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: white;
+    transition: background-color 0.3s ease;
+}
+
+.nav-right-btn:hover {
+    background: black;
+    color: white;
+}
+
+.nav-right img {
+    height: 20px;
+    width: 20px;
+    margin-right: -10px;
+}
+
+.nav-right img:hover {
+    opacity: 0.7;
+}
+
+/* ===== CATEGORY BAR ===== */
+
+.wishlist-bar {
+    /* margin-top: 2px; */
+    text-align: center;
+    padding: 15px 40px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+}
+
+.category-bar {
+    margin-top: 10px;
+    display: flex;
+    padding: 15px 40px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+}
+
+.category-bar a {
+    margin-right: 25px;
+    color: #777;
+}
+
+.category-bar .active {
+    color: #000;
+
+    font-weight: bold;
+    text-decoration: wavy;
+}
+
+.category-bar .inactive:hover {
+    font-weight: bold;
+}
+
+/* ===== SHOP GRID ===== */
+
+.shop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+    padding: 60px 40px;
+}
+
+.product-info {
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 12px 10px;
+    transition: background-color 0.3s ease;
+}
+
+
+.product-name {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.product-price {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+    .shop {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .shop {
+        grid-template-columns: 1fr;
+    }
+}
+
+.category-bar a {
+    margin-right: 25px;
+    color: #777;
+    position: relative;
+}
+
+.category-bar a.active {
+    color: #000;
+}
+
+.category-bar a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 1px;
+    background: #000;
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    background: #fff;
+    overflow: hidden;
+}
+
+/* IMAGE BASE */
+.product-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    opacity: 0;
+    transform: scale(1.02) translateZ(0);
+    transition:
+        opacity .35s ease,
+        transform .5s cubic-bezier(.25, .8, .25, 1);
+
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+.product-image .img-main {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* DEFAULT: tidak ada hover image behavior */
+.product-image:hover .img-main {
+    opacity: 1;
+}
+
+/* HANYA AKTIF kalau ada image kedua */
+.product.has-hover .product-image:hover .img-main {
+    opacity: 0;
+}
+
+.product.has-hover .product-image:hover .img-hover {
+    opacity: 1;
+}
+
+.product:hover .product-info {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease;
+}
+
+.landing img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+.enter-btn {
+    display: block;
+    position: absolute;
+
+    top: 60%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    padding: 10px 20px;
+
+    /* background: ; */
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 12px;
+
+    font-size: 16px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.enter-btn:hover {
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.site-footer {
+    /* border-top: 1px solid #eee; */
+    padding: 20px 40px;
+    /* padding-top: 200px; */
+    font-size: 11px;
+    letter-spacing: 0.08em;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-inner p {
+    font-size: 12px;
+}
+
+.footer-left,
+.footer-right {
+    color: #111;
+}
+
+.footer-left:hover,
+.footer-right:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.scroll-container {
+    overflow: hidden;
+    white-space: nowrap;
+    background: #1a1a1a;
+    color: white;
+    padding: 15px 0;
+}
+
+.scroll-text {
+    display: flex;
+    padding-left: 100%;
+    animation: scroll-left 20s linear infinite;
+    gap: 50px;
+}
+
+/* .scroll-text p {
+    font-weight: bold;
+    display: inline-block;
+} */
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+
+@media (hover: none) {
+    .product-image img {
+        transition: none;
+        transform: none;
+    }
+
+    .img-hover {
+        display: none;
+    }
+
+    .img-main {
+        opacity: 1 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .landing img {
+        height: 900px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .landing {
+        position: relative;
+    }
+
+    .landing-link {
+        display: block;
+        position: relative;
+    }
+
+    .enter-btn {
+        display: block;
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        padding: 10px 20px;
+
+        /* background: ; */
+        color: black;
+
+        border: 1px solid black;
+        border-radius: 12px;
+
+        font-size: 16px;
+        text-transform: uppercase;
+
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .enter-btn:hover {
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .footer-inner p {
+        display: none;
+    }
+
+    .nav-left-usn {
+        display: none;
+    }
+
+    .nav-left img {
+        /* margin-left: -10px; */
+        height: 90px;
+        max-height: 90px;
+    }
+
+    .nav-left-logo {
+        margin-left: -14px;
+        height: 90px;
+        max-height: 90px;
+    }
+
+    .nav-top {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        background: #fff;
+
+        padding: 0 15px;
+        height: 65px
+        margin: 0;
+    }
+
+    .nav-center,
+    .nav-right {
+        display: none !important;
+    }
+
+    .nav-right-usn {
+        font-size: 13px;
+        padding: 10px;
+
+        display: flex;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .nav-right-usn:hover {
+        font-weight: bold;
+    }
+
+    .nav-right-usn img {
+        display: block;
+
+        margin-left: 8px;
+
+        height: 15px;
+        width: 15px;
+
+        flex-shrink: 0;
+    }
+
+    .dropbtn {
+        display: block !important;
+    }
+
+    .nav-center a {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-bar {
+        padding: 10px 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .category-bar a {
+        font-size: 11px;
+        margin-right: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .shop {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .product-image {
+        width: 100%;
+    }
+
+    .product-info {
+        margin-top: 8px;
+    }
+
+    .product-name {
+        font-size: 11px;
+    }
+
+    .product-price {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 420px) {
+    .shop {
+        grid-template-columns: 1fr;
+    }
+}
+
+.product {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.product:active {
+    opacity: 0.85;
+}
+
+@media (hover: none) {
+    .product-image:active img {
+        transform: scale(1.02);
+    }
+}
+
+.dropbtn img {
+    pointer-events: none;
+}
+
+.dropbtn {
+    display: none;
+    padding: 13px;
+    border: none;
+    cursor: pointer;
+    background: white;
+}
+
+.dropbtn:hover {
+    border-radius: 10px;
+    background: #7a737377;
+}
+
+.dropbtn img {
+    width: 15px;
+    height: 15px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    border-radius: 15px;
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+
+/* Transisi gambar landing mobile */
+@media (max-width: 768px) {
+
+    .landing img {
+        width: 100%;
+        height: 900px;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.6s ease-in-out;
+    }
+
+    .landing img.fade-out {
+        opacity: 0;
+    }
+
+}

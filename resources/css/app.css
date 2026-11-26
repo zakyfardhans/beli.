@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+    /* Brand teal */
+    --color-brand: #3A6B5C; 
+    --color-brand-dark: #23443A; 
+    --color-brand-light: #EBF2F0;
+
+
+    /* Netral dari DESIGN.md */
+    --color-ink: #111C2D;
+    --color-muted: #64748B;
+    --color-canvas: #F8FAFC;
+    --color-line: #E2E8F0;
+
+    /* Badge status pesanan (bg + teks) */
+    --color-status-menunggu-pembayaran-bg: #FEF3C7;
+    --color-status-menunggu-pembayaran-text: #854D0E;
+    --color-status-menunggu-verifikasi-bg: #EDE9FE;
+    --color-status-menunggu-verifikasi-text: #5B21B6;
+    --color-status-diproses-bg: #E0F2FE;
+    --color-status-diproses-text: #075985;
+    --color-status-dikirim-bg: #E0E7FF;
+    --color-status-dikirim-text: #312E81;
+    --color-status-selesai-bg: #D1FAE5;
+    --color-status-selesai-text: #065F46;
+    --color-status-dibatalkan-bg: #FFE4E6;
+    --color-status-dibatalkan-text: #9F1239;
+
+    /* Elevation */
+    --shadow-soft: 0 4px 16px -2px rgba(30, 41, 59, 0.06);
+    --shadow-float: 0 10px 25px -4px rgba(30, 41, 59, 0.10);
+}
+
+@layer base {
+    body {
+        font-family: var(--font-sans);
+        -webkit-tap-highlight-color: transparent;
+    }
+}
