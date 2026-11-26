@@ -1,8 +1,8 @@
-# Beli. â€” Platform E-Commerce
+# Beli. Platform E-Commerce
 
-Platform e-commerce profesional (Laravel 12): katalog, keranjang, checkout dengan transaksi & snapshot harga, pembayaran manual, pembatalan, dan kelola pesanan oleh admin.
+Platform e-commerce sederhana (Laravel 12): katalog, keranjang, checkout dengan transaksi & snapshot harga, pembayaran manual, pembatalan, dan kelola pesanan oleh admin.
 
-> Proyek jobsheet **Tugas 3 â€” Toko Online (E-Commerce)**.
+> Proyek jobsheet **Tugas 3 Toko Online (E-Commerce)**.
 
 ## Fitur
 
@@ -13,7 +13,7 @@ Platform e-commerce profesional (Laravel 12): katalog, keranjang, checkout denga
 
 ## Kebutuhan
 
-- PHP â‰¥ 8.2, Composer
+- PHP 8.2, Composer
 - MySQL/MariaDB (atau SQLite)
 - Node.js + NPM (Tailwind v4 via Vite)
 
@@ -53,25 +53,25 @@ Buka `http://127.0.0.1:8000`.
 
 Semua kata sandi: **`password`**
 
-| Peran | Email |
-|---|---|
-| Admin | `admin@beli.test` |
-| Pelanggan | `zaky@beli.test` |
-| Pelanggan | `rina@beli.test` |
-| Pelanggan | `budi@beli.test` |
+| Peran     | Email             |
+| --------- | ----------------- |
+| Admin     | `admin@beli.test` |
+| Pelanggan | `zaky@beli.test`  |
+| Pelanggan | `rina@beli.test`  |
+| Pelanggan | `budi@beli.test`  |
 
-Data awal: 4 kategori, 14 produk (beberapa stok 0/â‰¤5), 5 pesanan dengan status bervariasi.
+Data awal: 4 kategori, 14 produk (beberapa stok 0/5), 5 pesanan dengan status bervariasi.
 
 ## Struktur Penting
 
-- `app/Enums/StatusPesanan.php` â€” aturan transisi status (`bolehKe`).
-- `app/Services/CheckoutService.php` â€” transaksi checkout, ongkir, snapshot, kode pesanan.
-- `app/Console/Commands/SecurePaymentProofs.php` â€” migrasi satu kali bukti bayar lama ke penyimpanan privat.
-- `app/Policies/PesananPolicy.php` â€” kepemilikan pesanan.
-- `app/Http/Middleware/CekRole.php` â€” otorisasi role.
-- `docs/RANCANGAN.md` â€” ERD, route, aturan bisnis.
-- `docs/URUTANPENGERJAAN/DETAILFITUR.md` â€” catatan progres implementasi.
-- `docs/PENGUJIAN.md` â€” hasil 9 skenario pengujian.
+- `app/Enums/StatusPesanan.php` aturan transisi status (`bolehKe`).
+- `app/Services/CheckoutService.php` transaksi checkout, ongkir, snapshot, kode pesanan.
+- `app/Console/Commands/SecurePaymentProofs.php` migrasi satu kali bukti bayar lama ke penyimpanan privat.
+- `app/Policies/PesananPolicy.php` kepemilikan pesanan.
+- `app/Http/Middleware/CekRole.php` otorisasi role.
+- `docs/RANCANGAN.md` ERD, route, aturan bisnis.
+- `docs/URUTANPENGERJAAN/DETAILFITUR.md` catatan progres implementasi.
+- `docs/PENGUJIAN.md` hasil 9 skenario pengujian.
 
 ## Pengujian
 
